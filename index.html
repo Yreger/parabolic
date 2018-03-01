@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>css3水平抛物线动画</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+        html,body{
+            width:100%;
+            height:100%;
+        }
+        #ball{
+            width:12px;
+            height:12px;
+            background:#fd7500;
+            border-radius:50%;
+            position:fixed;
+        }
+    </style>
+</head>
+<body>
+<div id="ball"></div>
+<script>
+    document.body.onclick = evt => {
+        let $ball = document.getElementById('ball');
+        $ball.style.top = evt.pageY+'px';   //手指点击的横坐标
+        $ball.style.left = evt.pageX+'px';  //手指点击的纵坐标
+        $ball.style.transition = 'left 0s, top 0s'; //还原小球位置
+        setTimeout(()=>{
+            $ball.style.top = (window.innerHeight-12) + 'px';  //落球的垂直距离
+            $ball.style.left = '0px';  //落球的水平距离
+            $ball.style.transition = 'left 1s linear, top 1s ease-in';  //落球动画
+        }, 20)
+    }
+</script>
+</body>
+</html>
